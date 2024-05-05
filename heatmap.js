@@ -4,10 +4,13 @@
     // Function to send data to your server
     function sendData(data) {
         try {
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', serverEndpoint, true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify(data));
+            fetch(serverEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
         } catch (error) {
             console.error('Error sending data:', error);
         }
