@@ -7,7 +7,8 @@
             fetch(serverEndpoint, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+
                 },
                 body: JSON.stringify(data)
             });
@@ -28,22 +29,7 @@
         sendData(eventData);
     }
 
-    // Function to handle mouse move events for heatmap data
-    function handleMouseMove(event) {
-        var eventData = {
-            type: 'mousemove',
-            timestamp: new Date().getTime(),
-            x: event.clientX,
-            y: event.clientY,
-            url: window.location.href
-        };
-        // Throttle the number of mousemove events sent to the server
-        if (!window.lastMouseMoveTime || new Date().getTime() - window.lastMouseMoveTime > 100) {
-            sendData(eventData);
-            window.lastMouseMoveTime = new Date().getTime();
-        }
-    }
-
+  
     // Add event listeners
     document.addEventListener('click', handleClick);
     document.addEventListener('mousemove', handleMouseMove);
